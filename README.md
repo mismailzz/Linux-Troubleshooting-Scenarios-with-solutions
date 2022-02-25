@@ -133,11 +133,11 @@ Its crucial to understand the problem statement before proceeding to any action.
 <details>
 <summary>fstab file missing or bad entry</summary>
 <!--All you need is a blank line-->
-  
-Due to the False entry and missing of fstab file as it contained the information about the partition. The system would not gets boot up.
+
     . 
-    ├── check /var/log/messages, dmesg and other log files
-    ├── if we have a badsector logs, we have to run fsck
+    ├── One of the error that cause the system unable to BOOT UP 
+    ├── Check /var/log/messages, dmesg and other log files
+    ├── If we have a badsector logs, we have to run fsck
     │   ├── True: 
     │   │   ├── reboot the system into resuce mode as booting it from CDROM by applying ISO
     │   │   ├── proceed with option 1, which mount the original root filesystem under /mnt/sysimage
