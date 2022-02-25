@@ -112,7 +112,40 @@ Its crucial to understand the problem statement before proceeding to any action.
     └── ...
 
 </details>
+
     
+<details>
+<summary>Filesystem get corrupted</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── check /var/log/messages, dmesg and other log files
+    ├── if we have a badsector logs, we have to run fsck
+    │   ├── True: 
+    │   │   ├── run fsck on block device not on the mountpoint and make sure its not mouted. As busy device error would occur
+    │   │   ├── if its on / and we can’t umount it as it contain OS
+    │   │   ├── reboot the system into resuce mode as booting it from CDROM by applying ISO
+    │   │   ├── proceed to continue the shell and run fsck, disk repair without mounting it 
+    └── ...
+
+</details>
+
+<details>
+<summary>fstab file missing or bad entry</summary>
+<!--All you need is a blank line-->
+  
+Due to the False entry and missing of fstab file as it contained the information about the partition. The system would not gets boot up.
+    . 
+    ├── check /var/log/messages, dmesg and other log files
+    ├── if we have a badsector logs, we have to run fsck
+    │   ├── True: 
+    │   │   ├── reboot the system into resuce mode as booting it from CDROM by applying ISO
+    │   │   ├── proceed with option 1, which mount the original root filesystem under /mnt/sysimage
+    │   │   ├── edit fstab entries or create a new file with the help of blkid and reboot
+    └── ...
+
+</details>
+
     
 <details>
 <summary>Some Linux Helpful Commands</summary>
@@ -136,7 +169,8 @@ $vgcreate
 $lvcreate
 $vgextend
 $lvextend
-    
+$dmesg    
+$blkid
 ```
 
 </details>
