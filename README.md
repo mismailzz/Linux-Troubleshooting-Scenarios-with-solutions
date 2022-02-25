@@ -50,6 +50,7 @@ Its crucial to understand the problem statement before proceeding to any action.
 
 </details>
 
+    
 <details>
 <summary>Cannot SSH as root/user</summary>
 <!--All you need is a blank line-->
@@ -71,6 +72,48 @@ Its crucial to understand the problem statement before proceeding to any action.
 </details>
 
  
+
+<details>
+<summary>Disk Space is full issue or add/extend disk space</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── System Performance degradation detection
+    │   ├── Application getting slow/unresponsive
+    │   ├── Commands are not running (For Example: as / disk space is full)
+    │   ├── Cannot do logging and other etc
+    ├── Analyse the issue
+    │   ├── df command to find the problematic filesystem space issue
+    ├── Action
+    │   ├── After finding the specific filesystem, use du command in that filesystem to get which files/directories are large
+    │   ├── Compress/remove big files
+    │   ├── Move the items to another partition/server
+    │   ├── Check the health status of the disks using badblocks command (For Example: #badblocks -v /dev/sda)
+    │   ├── Check which process is IO Bound (using iostat)
+    │   ├── Create a link to file/dir
+    ├── New disk addition
+    │   ├── Simple partition
+    │   │   ├── Add disk to VM
+    │   │   ├── Check the new disk with df/lsblk command
+    │   │   ├── fdisk to create partition. Better to have LVM partition
+    │   │   ├── Create filesytem and mount it
+    │   │   ├── fstab entry for persistent
+    │   ├── LVM Partition
+    │   │   ├── Add disk to VM
+    │   │   ├── Check the new disk with df/lsblk command
+    │   │   ├── fdisk to create LVM partition
+    │   │   ├── PV, VG, LV
+    │   │   ├── Create filesytem and mount it
+    │   │   ├── fstab entry for persistent
+    │   ├── Extend LVM partition
+    │   │   ├── Add disk, and create LVM partition 
+    │   │   ├── Add LVM partition (PV) in existing VG
+    │   │   ├── Extend LV and resize filesystem
+    └── ...
+
+</details>
+    
+    
 <details>
 <summary>Some Linux Helpful Commands</summary>
 <!--All you need is a blank line-->
@@ -81,7 +124,19 @@ Linux Commands
 $nslookup #for DNS resolution
 $ip #to get ip address information 
 $ping #to check the reachability 
-$netstat 
+$netstat #show network information like port binding, routes etc.
+$df #to get the overall disk usage
+$du
+$badblocks
+$iostat
+$lsblk
+$fdisk
+$pvcreate
+$vgcreate
+$lvcreate
+$vgextend
+$lvextend
+    
 ```
 
 </details>
