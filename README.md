@@ -146,6 +146,56 @@ Its crucial to understand the problem statement before proceeding to any action.
 
 </details>
 
+<details>
+<summary>Can't cd to the directory? Even if the user has the sudo privileges.</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Reasons and Resolution
+    │   ├── Directory does not exist
+    │   ├── Pathname conflict: relative vs absolute path
+    │   ├── Parent directory permission/ownership
+    │   ├── Doesn't have executable permission on target directory
+    │   ├── Hidden directory
+    └── ...
+
+</details>
+
+
+<details>
+<summary>Can't openfile or run script?</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Reasons and Resolution
+    │   ├── Target directory/File does not exist
+    │   ├── Pathname conflict: relative vs absolute path
+    │   ├── Parent directory permission/ownership
+    │   ├── Target file permission/ownership and have the executable
+    │   ├── Hidden directory/file
+    └── ...
+
+</details>
+   
+
+<details>
+<summary>Can't create links?</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Reasons and Resolution
+    │   ├── Target directory/File does not exist
+    │   ├── Pathname conflict: relative vs absolute path - (should be complete path)
+    │   ├── Parent directory permission/ownership 
+    │   ├── Target file permission/ownership - (as there should be read permission)
+    │   ├── Hidden directory/file
+    └── ...
+
+</details>
+
+These above reasons and resolution can be mapped on other issues like can't execute command, can't view/write file etc.
+
+    
     
 <details>
 <summary>Some Linux Helpful Commands</summary>
