@@ -195,8 +195,143 @@ Its crucial to understand the problem statement before proceeding to any action.
 
 These above reasons and resolution can be mapped on other issues like can't execute command, can't view/write file etc.
 
+
+<details>
+<summary>Running Out of Memory?</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Types
+    │   ├── Cache (L1, L2, L3)
+    │   ├── RAM
+    │   │   ├── Usage
+    │   │   │   ├── #free -h
+    │   │   │   │   ├── Total (Total assigned memory)
+    │   │   │   │   ├── Used (Total actual used memory)
+    │   │   │   │   ├── Free (Actual free memory)
+    │   │   │   │   ├── Shared (Shared Memory)
+    │   │   │   │   ├── Buff/Cache (Pages cache memory)
+    │   │   │   │   ├── Available (Memory can be freed)
+    │   │   │   ├── /proc/meminfo
+    │   │   │   │   ├── file active
+    │   │   │   │   ├── file inactive
+    │   │   │   │   ├── anon active 
+    │   │   │   │   ├── anon inactive
+    │   ├── Swap (Virtual Memory)
+    ├── Resolution
+    │   ├── Identify the processes that are using high memory using top, htop, ps etc.
+    │   ├── Check the OOM in logs and also check if there is a memory commitment in sysctl.conf
+    │   ├── Kill or restart the process/service
+    │   ├── prioritize the process using nice 
+    │   ├── Add/Extend the swap space 
+    │   ├── Add more physical more RAM
+    └── ...
+
+</details>
+
+
+<details>
+<summary>Add/Extend the Swap space</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Due to running out of memory, we would need to add more swap space
+    │   ├── Create a file with #dd, as it will reserve the blocks of disk for swap file
+    │   ├── Set permission 600 and give root ownership
+    │   ├── #mkswap
+    │   ├── Now Turned swap on #swapon
+    │   ├── fstab entry for persistent
+    └── ...
+
+</details>
+
+
+<details>
+<summary>Can't run certains commands</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Troubleshooting and Resolution
+    │   ├── command
+    │   │   ├── Could be the system related command which non root user does not have the access
+    │   │   ├── Could be the user defined script/command
+    │   ├── Troubleshooting
+    │   │   ├── permission/ownership of the command/script
+    │   │   ├── sudo permission
+    │   │   ├── absolute/relative path of command/script
+    │   │   ├── not defined in user $PATH variable
+    │   │   ├── command is not installed 
+    │   │   ├── command library is missing or deleted
+    └── ...
+
+</details>
+
     
-    
+<details>
+<summary>System unexpectedly reboot and process restart?</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Troubleshooting and Resolution
+    │   ├── System reboot/crash reasons
+    │   │   ├── CPU stress
+    │   │   ├── RAM stress
+    │   │   ├── Kernel fault
+    │   │   ├── Hardware fault
+    │   ├── Process restart
+    │   │   ├── System reboot
+    │   │   ├── Restart itself
+    │   │   ├── Watchdog application 
+    │   │   │   ├── To prevent high stress on system resources 
+    │   │   │   ├── If application causing stress, so it will restart or terminate
+    │   ├── Troubleshooting
+    │   │   ├── After logged in, check the status by using commands like uptime, top, dmesg, journalctl, iostat -xz 1
+    │   │   ├── syslog.log, boot.log, dmesg, messages.log etc 
+    │   │   ├── custom log path of applicatoin
+    │   │   ├── if not completely accessible, so take the virutal console like from ILO, IDRAC etc
+    │   │   ├── open a case and reach out a vendor
+    └── ...
+
+</details>
+
+ 
+<details>
+<summary>Unable to get the IP Address</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── IP Assignment Methods
+    │   ├── DHCP
+    │   │   ├── Fixed Allocation
+    │   │   ├── Dynamic Allocation
+    │   ├── Static
+    ├── Troubleshooting
+    │   ├── check network setting from virtualization environment like VMware, VirtualBox or etc
+    │   ├── check the IP address is assigned or not
+    │   ├── check the NIC status from host side using #lspci, #nmcli etc
+    │   ├── restart network service 
+    └── ...
+
+</details>
+
+
+<details>
+<summary>IP Address is assigned but not reachable</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Troubleshooting
+    │   ├── check the physical network connectivity, configured switch interface
+    │   ├── check the NIC status from software/hardware level using #lspci, #nmcli, #mii-tool etc
+    │   ├── check gateway, netmask, and ping the gateway to verify outbound traffic
+    │   ├── check the network routes and service 
+    │   ├── check the IP Address duplication 
+    │   ├── check the firewall access on the host and from the Network Team
+    └── ...
+
+</details>
+
+ 
 <details>
 <summary>Some Linux Helpful Commands</summary>
 <!--All you need is a blank line-->
@@ -221,6 +356,9 @@ $vgextend
 $lvextend
 $dmesg    
 $blkid
+$free -h
+$cat /proc/meminfo
+$env    
 ```
 
 </details>
