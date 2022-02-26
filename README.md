@@ -1,7 +1,9 @@
 # Linux-Troubleshooting-Scenarios-with-solutions
 Linux Troubleshooting Scenarios based question with solutions
 
-Its crucial to understand the problem statement before proceeding to any action. 
+Its crucial to understand the problem statement before proceeding for any action. The first action should not be to rush out to server side and try to troubleshoot the issue. The first approach would be is to try to understand the issue and ask the user/client follow up questions to understand the problem properly. Its often happen that the issues are on the client/user side who reported it and lot of the time get spend into understand or even become impossible to get it resolved. So don't preassume that your client/user would be technical and whatever the shared information is 100% right. We have to ask the questions to build the facts for the formation of right direction. 
+
+In the below cases, we tried to expand and understand the problem statement. As it would provide us the clear crystal clear image to brain that whats happening and in which direction we have to move forward. 
 
 <details>
 <summary>Server is not reachable or cannot connect</summary>
