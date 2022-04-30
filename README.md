@@ -1,5 +1,5 @@
 # Linux-Troubleshooting-Scenarios-with-solutions
-Linux Troubleshooting Scenarios based question with solutions
+Linux Troubleshooting Scenarios based question with solution approach 
 
 Its crucial to understand the problem statement before proceeding for any action. The first action should not be to rush out to server side and try to troubleshoot the issue. The first approach would be is to try to understand the issue and ask the user/client follow up questions to understand the problem properly. Its often happen that the issues are on the client/user side who reported it and lot of the time get spend into understand or even become impossible to get it resolved. So don't preassume that your client/user would be technical and whatever the shared information is 100% right. We have to ask the questions to build the facts for the formation of right direction. 
 
@@ -333,7 +333,31 @@ These above reasons and resolution can be mapped on other issues like can't exec
 
 </details>
 
- 
+
+<details>
+<summary>HTTP error 403: forbidden yum occurs when we try to install a package using yum</summary>
+<i>The HTTP 403 Forbidden response status code indicates that the server understands the request but refuses to authorize it. The access is permanently forbidden and tied to the application logic, such as insufficient rights to a resource. [Ref](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403 , https://bobcares.com/blog/http-error-403-forbidden-yum/)</i>
+<!--All you need is a blank line-->
+
+    . 
+    ├── There could be some major causes during installing pkg from yum
+    │   ├── Network configuration
+    │   │   ├── If you are using proxy server
+    │   │   │   ├── check the proxy setting in the /etc/yum.conf as its effective rather than using env variable #export https_proxy=https://<ip/hostname>:<port>
+    │   │   │   │   ├── If the proxy server is valid
+    │   │   │   │   │   ├── Check the ACL on the proxy server
+    │   │   ├── Other
+    │   ├── A corrupt repo
+    │   ├── Permission of packages
+    │   │   ├── This option most ofently not used because we linux manages by itself so avoid to proceed for this option. The use of this option irresponsibly could make the system unstable
+    │   ├── Selinux issue
+    │   ├── firewalld rules
+    │   ├── Other
+    └── ...
+
+</details>
+    
+   
 <details>
 <summary>Some Linux Helpful Commands</summary>
 <!--All you need is a blank line-->
