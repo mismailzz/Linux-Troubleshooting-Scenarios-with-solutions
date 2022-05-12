@@ -335,6 +335,22 @@ These above reasons and resolution can be mapped on other issues like can't exec
 
 
 <details>
+<summary>How to back up and restore file permissions on Linux</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Troubleshooting
+    │   ├── The best option is to create the ACL file of Dir/Files before changing the permissions in bulk
+    │   │   ├── Create the acl file before changing the permission (or backup the file permission): ~$ getfacl -R <dir> > permissions.acl    
+    │   │   ├── Restore File Permissions: ~$ setfacl --restore=permissions.acl
+    │   ├── Restore from the VM Snapshot (But not always a good option for production)
+    │   ├── Rebuild the VM (this option is safe for future)
+    └── ...
+
+</details>
+    
+    
+<details>
 <summary>HTTP error 403: forbidden yum occurs when we try to install a package using yum</summary>
 <i>The HTTP 403 Forbidden response status code indicates that the server understands the request but refuses to authorize it. The access is permanently forbidden and tied to the application logic, such as insufficient rights to a resource. [Ref](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/403 , https://bobcares.com/blog/http-error-403-forbidden-yum/)</i>
 <!--All you need is a blank line-->
