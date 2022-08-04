@@ -372,6 +372,21 @@ These above reasons and resolution can be mapped on other issues like can't exec
     └── ...
 
 </details>
+ 
+
+<details>
+<summary>Useful tips related disk partition</summary>
+<!--All you need is a blank line-->
+
+    . 
+    ├── Tips
+    │   ├── After adding/attaching a new disk to a VM, we can get its status from lsblk command by doing ~$echo 1 > /sys/block/sda/device/rescan
+    │   ├── If we increase disk size of existing disk than the additional space get appended to the existing disk without affecting the already existed FileSystem and Partition    
+    │   ├── We can also recreate the filesystem on block device as it will automatically format the old one
+    │   ├── If we have a disk(with created partition/FS) we can share the .vmdk to other VM. So after mounting we would have a same data as it was on previous one.
+    └── ...
+
+</details>
     
    
 <details>
